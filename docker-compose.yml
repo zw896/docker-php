@@ -4,7 +4,7 @@ services:
   php-fpm:
     build: ./docker/php-fpm
     volumes:
-      - ./src:/var/www
+      - ./myphp:/var/www
     ports:
       - "9000:9000"
 
@@ -15,7 +15,7 @@ services:
     links:
       - php-fpm:php-fpm
     volumes:
-      - ./src:/var/www
+      - ./myphp:/var/www
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./docker/nginx/sites/:/etc/nginx/sites-available
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d
@@ -29,6 +29,6 @@ services:
         - "3306:3306"
     environment:
         MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: my-framework
+        MYSQL_DATABASE: myphp
         MYSQL_USER: root
         MYSQL_PASSWORD: root
