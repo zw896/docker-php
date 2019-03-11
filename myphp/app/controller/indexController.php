@@ -9,15 +9,13 @@
 namespace app\controller;
 //use core\lib\model;
 
-class indexController
+class indexController extends \core\myphp
 {
     public function index()
     {
-//        p('it is indexController');
-        $model = new \core\lib\model();
-        $sql = "SELECT * FROM test";
-        $ret = $model->query($sql);
-        p($ret->fetchAll());
-
+        $temp = new \core\lib\model();
+        $data = 'hello world';
+        $this->assign('data', $data);
+        $this->display('index.html');
     }
 }

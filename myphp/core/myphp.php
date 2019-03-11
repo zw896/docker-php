@@ -11,6 +11,7 @@ namespace core;
 class myphp
 {
     public static $classMap = array();
+    public $assign;
 
     /*
      * start framework
@@ -57,5 +58,33 @@ class myphp
                 return false;
             }
         }
+    }
+
+    public function assign($name, $value)
+    {
+        $this->assign[$name] = $value;
+    }
+
+    public function display($file)
+    {
+        $file = APP.'/views/'.$file;
+//        p($file);
+
+        if(is_file($file)) {
+            extract($this->assign);
+            include $file;
+        }
+
+//        $file = APP.'/views'.$file;
+//
+//        if(is_file($file)) {
+//
+//            $loader = new \Twig_Loader_Filesystem(APP.'/views');
+//            $twig = new \Twig_Environment($loader, array(
+//                'cache' => MYPHP.'/log',
+//            ));
+//            $template = $twig->load('index.html');
+//            $template->render($this->assign?$this->assign:'');
+//        }
     }
 }
