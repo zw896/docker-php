@@ -68,7 +68,6 @@ class myphp
     public function display($file)
     {
         $file = APP.'/views/'.$file;
-//        p($file);
 
         if(is_file($file)) {
             extract($this->assign);

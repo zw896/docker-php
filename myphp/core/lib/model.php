@@ -8,16 +8,16 @@
 
 namespace core\lib;
 
+use core\lib\conf;
+
 class model extends \PDO
 {
     public function __construct()
     {
-        //
-        $dsn = 'mysql:host=mysql;dbname=myphp';
-        $username = 'root';
-        $password = 'root';
+        $databse = conf::all('database');
+
         try {
-            parent::__construct($dsn, $username, $password);
+            parent::__construct($databse['DSN'], $databse['USERNAME'], $databse['PWD']);
         } catch (\PDOException $e) {
 //            $dsn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
             p($e->getMessage());

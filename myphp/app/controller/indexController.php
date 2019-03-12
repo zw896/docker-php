@@ -7,13 +7,17 @@
  */
 
 namespace app\controller;
-//use core\lib\model;
+use core\lib\model;
 
 class indexController extends \core\myphp
 {
     public function index()
     {
         $temp = new \core\lib\model();
+//        $temp = \core\lib\conf::get('CTRL', 'route');
+//        $temp = \core\lib\conf::get('ACTION', 'route');
+        print_r($temp);
+
         $data = 'hello world';
         $this->assign('data', $data);
         $this->display('index.html');
