@@ -13,10 +13,17 @@ define('MYPHP', realpath('./'));
 define('CORE', MYPHP.'/core');
 define('APP', MYPHP.'/app');
 define('MODULE', 'app');
-//include "vendor/autoload.php";
+include "vendor/autoload.php";
 define('DEBUG', true);
-if(DEBUG) {
 
+if(DEBUG) {
+    $whoops = new \Whoops\Run;
+    $errorTitle = 'Error';
+    $option = new \Whoops\Handler\PrettyPageHandler();
+    $option->setPageTitle($errorTitle);
+    $whoops->pushHandler($option);
+//    $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
+    $whoops->register();
     ini_set('display_errors','On');
 } else {
     ini_set('display_errors','Off');

@@ -7,7 +7,10 @@
  */
 
 return array(
-    'DSN' => 'mysql:host=mysql;dbname=myphp',
-    'USERNAME' => 'root',
-    'PWD' => 'root'
+    'database_type' => 'mysql',
+    'database_name' => 'myphp',
+    'server' => 'mysql',
+    'username' => 'root',
+    'password' => 'root',
+    'charset' => 'utf8'
 );
